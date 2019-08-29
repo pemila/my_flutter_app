@@ -78,6 +78,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Navigator.pushNamed(context,"word_route");
                             },
                         ),
+                        FlatButton(
+                            child: Text("Assets Page"),
+                            textColor: Colors.blue,
+                            onPressed: () {
+                                Navigator.pushNamed(context,"assets_route");
+                            },
+                        ),
                         // 创建一个可接收返回值的路由
                         RaisedButton(
                             textColor: Colors.green,

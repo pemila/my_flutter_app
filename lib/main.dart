@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/NewRoute.dart';
+import 'package:my_flutter_app/assetsPage.dart';
 import 'package:my_flutter_app/randomWord.dart';
 import 'package:my_flutter_app/tipRoute.dart';
 import 'homePage.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
         "new_route":(context)=> NewRoute(),
         "word_route":(context)=>RandomWord(),
         // 带参数的路由使用命名调用
-        "tip_route":(context)=> TipRoute(text: ModalRoute.of(context).settings.arguments,)
+        "tip_route":(context)=> TipRoute(text: ModalRoute.of(context).settings.arguments,),
+        "assets_route": (context)=> AssetsPageRoute(),
       },
       onGenerateRoute: (RouteSettings settings){
         // 对于需要进行权限控制的页面
