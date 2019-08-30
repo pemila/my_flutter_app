@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/tipRoute.dart';
-import 'newRoute.dart';
+import 'package:my_flutter_app/basedemo/tipRoute.dart';
+import 'package:my_flutter_app/basedemo/newRoute.dart';
 
 // 首页
 class MyHomePage extends StatefulWidget {
@@ -111,6 +111,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                 print("路由返回值: $result");
                             },
                             child: Text("打开提示页(通过命名调用)"),
+                        ),
+                        RaisedButton(
+                            textColor: Colors.black,
+                            onPressed: () {
+                                Navigator.of(context).pushNamed("base_module_route");
+                            },
+                            child: Text("Base Module"),
                         ),
                     ],
                 ),
