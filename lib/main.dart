@@ -1,11 +1,15 @@
 import 'dart:async';
+import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/NewRoute.dart';
-import 'package:my_flutter_app/assetsPage.dart';
-import 'package:my_flutter_app/randomWord.dart';
-import 'package:my_flutter_app/tipRoute.dart';
-import 'homePage.dart';
+import 'package:my_flutter_app/basedemo/newRoute.dart';
+import 'package:my_flutter_app/basedemo/assetsPage.dart';
+import 'package:my_flutter_app/basedemo/randomWord.dart';
+import 'package:my_flutter_app/basedemo/tipRoute.dart';
+import 'package:my_flutter_app/basedemo/homePage.dart';
+import 'package:my_flutter_app/logUtils.dart';
+import 'package:my_flutter_app/module/base/baseModulePage.dart';
+import 'package:my_flutter_app/module/base/widgetDemo.dart';
 
 //void main() => runApp(MyApp());
 
@@ -34,8 +38,6 @@ void main() {
     },
     
   );
-
-  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -79,6 +81,11 @@ class MyApp extends StatelessWidget {
               text: ModalRoute.of(context).settings.arguments,
             ),
         "assets_route": (context) => AssetsPageRoute(),
+        "base_module_route":(context)=> BaseModulePage(),
+        "echo_statelesswidget_route": (context) => Echo(
+              text: ModalRoute.of(context).settings.arguments,
+            ),
+        "counter_statefulwidget_route":(context)=> Counter(),
       },
       onGenerateRoute: (RouteSettings settings) {
         // 对于需要进行权限控制的页面
@@ -98,6 +105,7 @@ class MyApp extends StatelessWidget {
 
 void collectLog(String line) {
   //收集日志
+  LogUtils.i("print", line);
 }
 
 void reportErrorAndLog(FlutterErrorDetails details) {
