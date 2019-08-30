@@ -57,20 +57,53 @@ class Counter extends StatefulWidget {
 	}
 }
 
+
+
+
+
 class _CounterState extends State<Counter>{
 	int _counter;
-	
+    static GlobalKey<ScaffoldState> _globalKey= GlobalKey();
     @override
     Widget build(BuildContext context) {
 	    print("build");
         return Scaffold(
-            body: Center(
-                child: FlatButton(
-                    child: Text("$_counter"),
-                    // 点击后计数器自增
-                    onPressed: ()=> setState(()=> ++_counter ),
-                ),
-            ),
+            key: _globalKey,
+            body: Column(
+                children: <Widget>[
+                    FlatButton(
+                        padding: EdgeInsets.all(20.0),
+                        child: Text("$_counter"),
+                        // 点击后计数器自增
+                        onPressed: ()=> setState(()=> ++_counter ),
+                    ),
+                    Builder(builder: (context){
+                        // 从Context中获取 State对象
+                        return RaisedButton(
+                            onPressed: () {
+                                // 查找父级最近的Scaffold对应的ScaffoldState对象
+//                                ScaffoldState _state = context.ancestorStateOfType(TypeMatcher<ScaffoldState>());
+                                // 也可以使用StatefulWidget实现类的of方法直接获取state，当不想向外部暴露state时，不提供of方法即可
+                                ScaffoldState _state=Scaffold.of(context);
+                                
+                                // 也可以使用GlobalKey来获取State对象
+                                // 需要对具体的WidgetState指定globalKey，并使用静态变量存储，需要保证全局唯一
+//                                ScaffoldState _state =  _globalKey.currentState;
+                                
+                                //调用ScaffoldState的showSnackBar来弹出SnackBar
+                                _state.showSnackBar(
+                                    SnackBar(
+                                        content: Text("我是SnackBar"),
+                                    ),
+                                );
+                            },
+                            child: Text("显示SnackBar"),
+                        );
+                    },)
+                    
+                    
+                ],
+            )
         );
     }
     
