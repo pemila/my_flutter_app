@@ -10,6 +10,7 @@ import 'package:my_flutter_app/basedemo/homePage.dart';
 import 'package:my_flutter_app/logUtils.dart';
 import 'package:my_flutter_app/module/base/baseModulePage.dart';
 import 'package:my_flutter_app/module/base/widgetDemo.dart';
+import 'package:my_flutter_app/module/base/widgetStateManager.dart';
 
 //void main() => runApp(MyApp());
 
@@ -86,6 +87,9 @@ class MyApp extends StatelessWidget {
               text: ModalRoute.of(context).settings.arguments,
             ),
         "counter_statefulwidget_route":(context)=> Counter(),
+        "widget_state_a_route":(context)=>TapBoxA(),
+        "widget_state_b_route":(context)=>ParentB(),
+        
       },
       onGenerateRoute: (RouteSettings settings) {
         // 对于需要进行权限控制的页面

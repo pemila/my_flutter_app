@@ -99,7 +99,19 @@ class _CounterState extends State<Counter>{
                             },
                             child: Text("显示SnackBar"),
                         );
-                    },)
+                    },),
+                    FlatButton(
+                        child: Text("Widget State A"),
+                        onPressed: () {
+                            Navigator.pushNamed(context,"widget_state_a_route");
+                        },
+                    ),
+                    FlatButton(
+                        child: Text("Widget State B"),
+                        onPressed: () {
+                            Navigator.pushNamed(context,"widget_state_b_route");
+                        },
+                    ),
                     
                     
                 ],
